@@ -1,0 +1,86 @@
+﻿<local:BasePage x:Class="VisualStudioDownloader.Pages.Download"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VisualStudioDownloader.Pages"
+      xmlns:converters="clr-namespace:VisualStudioDownloader.ValueConverters"
+      xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Browse"
+      DataContext="{Binding Source={StaticResource Locator}, Path=DownloadViewModel}">
+
+    <behaviors:Interaction.Triggers>
+        <behaviors:EventTrigger EventName="Loaded">
+            <behaviors:InvokeCommandAction Command="{Binding IdentifyBootstrapper}" />
+        </behaviors:EventTrigger>
+    </behaviors:Interaction.Triggers>
+    
+    <Page.Resources>        
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextForegroundBrush}"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin=" 10">
+            
+            <StackPanel Orientation="Vertical">                
+                <TextBlock Text="Download"
+                           HorizontalAlignment="Center"
+                           FontSize="40"/>
+            </StackPanel>
+        </DockPanel>
+
+        <DockPanel Grid.Row="1">
+            <TextBlock DockPanel.Dock="Top" Margin="0 -20 0 20">
+                <Run Text="Boostrapper information:" FontWeight="Bold"/>
+                <LineBreak/>
+                <Run FontWeight="DemiBold" Text="Filename: &#x09;"/>
+                <Run Text="{Binding Path= BootstrapperIdentity.Filename}" />
+                <LineBreak/>
+                <Run FontWeight="DemiBold" Text="Product name: &#x09;"/>
+                <Run Text="{Binding Path= BootstrapperIdentity.ProductName}" />
+                <LineBreak/>
+                <Run FontWeight="DemiBold" Text="Version: &#x09;&#x09;"/>
+                <Run Text="{Binding Path= BootstrapperIdentity.Version}" />
+            </TextBlock>
+
+            <TextBlock Text="Select the required options:" FontSize="25" DockPanel.Dock="Top" Margin="0 20 0 0"/>
+
+            <CheckBox x:Name="CheckBoxOptionalComponents"
+                      DockPanel.Dock="Top"
+                      VerticalAlignment="Top"
+                      Content="Optional Components"
+                      IsChecked="{Binding OptionalComponents, NotifyOnSourceUpdated=True}"
+                      Style="{DynamicResource CheckBoxStyle}"/>
+
+            <CheckBox x:Name="CheckBoxRecommendedComponents"
+                      DockPanel.Dock="Top"
+                      VerticalAlignment="Top"
+                      Content="Recommended Components"
+                      IsChecked="{Binding RecommendedComponents}"
+                      Style="{DynamicResource CheckBoxStyle}"/>            
+        </DockPanel>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="ButtonBack"
+                    Content="Back"
+                    Style="{DynamicResource NavigationButtonStyle}"
+                    Click="ButtonBack_Click"/>
+            <Button x:Name="ButtonNext"
+                    Content="Start Download"
+                    Width="210"
+                    Style="{DynamicResource NavigationButtonStyle}"
+                    Click="ButtonNext_Click"/>
+        </StackPanel>
+    </Grid>
+</local:BasePage>

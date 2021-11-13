@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!--Title bar button style-->
+    <Style x:Key="ListBoxStyle" TargetType="ListBox">
+        <Setter Property="Foreground" Value="{StaticResource ListBoxForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ListBoxBackgroundBrush}"/>
+    </Style>
+   
+</ResourceDictionary>

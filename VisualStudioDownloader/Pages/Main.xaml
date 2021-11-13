@@ -1,0 +1,59 @@
+﻿<local:BasePage x:Class="VisualStudioDownloader.Pages.Main"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:VisualStudioDownloader.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Browse"
+      DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}">
+    
+    <Page.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextForegroundBrush}"/>
+            <Setter Property="FontWeight" Value="Light"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin=" 10" VerticalAlignment="Center">
+            
+            <TextBlock Text="What would you like to do?" 
+                       FontSize="20"
+                       HorizontalAlignment="Center"/>
+
+            <Button x:Name="ButtonDownload" Margin="0 30 0 10"
+                    Height="45" 
+                    FontSize="30"
+                    Content="Download"
+                    ToolTip="Download Visual Studio offline installation"
+                    Style="{DynamicResource TitleBarButtonStyle}"
+                    Click="ButtonDownload_Click"/>
+
+            <Button x:Name="ButtonUpdate"
+                    Margin="0 10 0 10"
+                    Height="45"
+                    FontSize="30"
+                    Content="Update"
+                    ToolTip="Update a previously downloaded Visual Studio offline installation"
+                    Style="{DynamicResource TitleBarButtonStyle}"
+                    Click="ButtonUpdate_Click"/>
+
+            <Button x:Name="ButtonInstall"
+                    Margin="0 10 0 10"
+                    Height="45"
+                    FontSize="30"
+                    Content="Install"
+                    ToolTip="Install Visual Studio offline installation"
+                    Style="{DynamicResource TitleBarButtonStyle}"
+                    Click="ButtonInstall_Click"/>
+
+            
+        </StackPanel>
+        <TextBlock VerticalAlignment="Bottom" FontWeight="DemiBold" Margin="5 0 0 5" ToolTip="You can change this directory in the appsettings.json file">
+            <Run Text="Download/Boostrapper directory: "/>
+            <Run Text="{Binding DownloadDirectory}"/>
+        </TextBlock> 
+    </Grid>
+</local:BasePage>
