@@ -60,6 +60,7 @@
                       DockPanel.Dock="Top"
                       VerticalAlignment="Top"
                       Content="Optional Components"
+                      ToolTip="Include all the optional components for the specified workload IDs."
                       IsChecked="{Binding OptionalComponents, NotifyOnSourceUpdated=True}"
                       Style="{DynamicResource CheckBoxStyle}"/>
 
@@ -67,8 +68,17 @@
                       DockPanel.Dock="Top"
                       VerticalAlignment="Top"
                       Content="Recommended Components"
+                      ToolTip="Include all the recommended components for the specified workload IDs."
                       IsChecked="{Binding RecommendedComponents}"
-                      Style="{DynamicResource CheckBoxStyle}"/>            
+                      Style="{DynamicResource CheckBoxStyle}"/>
+        
+            <CheckBox x:Name="CheckBoxUseLatestInstaller"
+                      DockPanel.Dock="Top"
+                      VerticalAlignment="Top"
+                      Content="Use Latest Installer"
+                      ToolTip="Always use the latest installer. The benefit of using the latest installer is that your layout will be able to take advantage of the bug fixes and new functionality that we continue to add to the installer."
+                      IsChecked="{Binding UseLatestInstaller}"
+                      Style="{DynamicResource CheckBoxStyle}"/>
         </DockPanel>
         
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">

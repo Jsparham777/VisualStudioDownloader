@@ -15,6 +15,7 @@ namespace VisualStudioDownloader.ViewModels
         private BootstrapperInfo _bootstrapperIdentity;
         private bool _optionalComponents;
         private bool _recommendedComponents;
+        private bool _useLatestInstaller = true;
 
         /// <summary>
         /// Gets or sets the bootstrapper file information.
@@ -42,7 +43,7 @@ namespace VisualStudioDownloader.ViewModels
                 NotifyPropertyChanged();
             }
         }
-
+        
         /// <summary>
         /// Gets or sets the recommended components option.
         /// </summary>
@@ -52,7 +53,21 @@ namespace VisualStudioDownloader.ViewModels
             set
             {
                 _recommendedComponents = value;
-                UpdateOption("IncludeRecommended", value);
+                UpdateOption("includeRecommended", value);
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the use latest installer option.
+        /// </summary>
+        public bool UseLatestInstaller
+        {
+            get => _useLatestInstaller;
+            set
+            {
+                _useLatestInstaller = value;
+                UpdateOption("useLatestInstaller", value);
                 NotifyPropertyChanged();
             }
         }
