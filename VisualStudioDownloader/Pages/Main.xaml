@@ -18,7 +18,7 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" Margin=" 10" VerticalAlignment="Center">
-            
+
             <TextBlock Text="What would you like to do?" 
                        FontSize="20"
                        HorizontalAlignment="Center"/>
@@ -29,7 +29,8 @@
                     Content="Download"
                     ToolTip="Download Visual Studio offline installation"
                     Style="{DynamicResource TitleBarButtonStyle}"
-                    Click="ButtonDownload_Click"/>
+                    Click="ButtonDownload_Click"
+                    IsEnabled="{Binding BoostrapperFound}"/>
 
             <Button x:Name="ButtonUpdate"
                     Margin="0 10 0 10"
@@ -38,7 +39,8 @@
                     Content="Update"
                     ToolTip="Update a previously downloaded Visual Studio offline installation"
                     Style="{DynamicResource TitleBarButtonStyle}"
-                    Click="ButtonUpdate_Click"/>
+                    Click="ButtonUpdate_Click"
+                    IsEnabled="{Binding BoostrapperFound}"/>
 
             <Button x:Name="ButtonInstall"
                     Margin="0 10 0 10"
@@ -47,12 +49,13 @@
                     Content="Install"
                     ToolTip="Install Visual Studio offline installation"
                     Style="{DynamicResource TitleBarButtonStyle}"
-                    Click="ButtonInstall_Click"/>
+                    Click="ButtonInstall_Click"
+                    IsEnabled="{Binding BoostrapperFound}"/>
 
             
         </StackPanel>
         <TextBlock VerticalAlignment="Bottom" FontWeight="DemiBold" Margin="5 0 0 5" ToolTip="You can change this directory in the appsettings.json file">
-            <Run Text="Download/Boostrapper directory: "/>
+            <Run Text="Boostrapper directory: "/>
             <Run Text="{Binding DownloadDirectory}"/>
         </TextBlock> 
     </Grid>

@@ -19,14 +19,6 @@ namespace VisualStudioDownloader.ViewModels
         /// <param name="settings">The settings.</param>
         public MainWindowViewModel(IOptions<AppSettings> settings)
         {
-            switch (settings.Value.Environment.ToLower())
-            {                
-                case "development":
-                    WindowTitle += " [DEVELOPMENT]";
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

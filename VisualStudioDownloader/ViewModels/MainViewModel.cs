@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using System;
 using System.IO;
 
 namespace VisualStudioDownloader.ViewModels
@@ -11,6 +12,7 @@ namespace VisualStudioDownloader.ViewModels
     {
         private readonly IOptions<AppSettings> _options;
         private string _downloadDirectory;
+        private bool _bootstrapperFound;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
@@ -18,11 +20,14 @@ namespace VisualStudioDownloader.ViewModels
         public MainViewModel(IOptions<AppSettings> options)
         {
             _options = options;
-            _downloadDirectory = Path.GetDirectoryName(_options.Value.BootstrapperPath);
+            _downloadDirectory = Path.GetFullPath(_options.Value.BootstrapperPath);
+
+            // Determine if the path is valid
+            _bootstrapperFound = Directory.Exists(_downloadDirectory);           
         }
 
         /// <summary>
-        /// Gets or sets the the arguments file found flag.
+        /// Gets or sets the bootstrapper directory.
         /// </summary>
         public string DownloadDirectory
         {
@@ -30,6 +35,19 @@ namespace VisualStudioDownloader.ViewModels
             set
             {
                 _downloadDirectory = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the bootstrapper found flag.
+        /// </summary>
+        public bool BoostrapperFound
+        {
+            get => _bootstrapperFound;
+            set
+            {
+                _bootstrapperFound = value;
                 NotifyPropertyChanged();
             }
         }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -92,10 +94,28 @@ namespace VisualStudioDownloader
             {
                 args.Handled = true;
                 ShowUnhandledException(args.Exception);
-            };
+            };                 
 
             base.OnStartup(e);
+
+            CheckBootstrapper();
         }
+
+        /// <summary>
+        /// Checks the path to the boostrapper, provided in the appsettings.json file, exists.
+        /// </summary>
+        /// <exception cref="FileNotFoundException">Thrown when the bootstrapper is not found.</exception>
+        private void CheckBootstrapper()
+        {
+            var options = ServiceProvider.GetRequiredService<IOptions<AppSettings>>();
+
+            var downloadDirectory = Path.GetFullPath(options.Value.BootstrapperPath);
+
+            // Determine if the path is valid
+            if (!Directory.Exists(downloadDirectory))
+                throw new FileNotFoundException($"Boostrapper in {downloadDirectory} not found. Check the directory or the appsettings.json file.");
+        }
+
 
         /// <summary>
         /// Handles exceptions to uncovered non-UI threads.
