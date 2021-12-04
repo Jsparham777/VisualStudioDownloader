@@ -11,7 +11,7 @@ namespace VisualStudioDownloader.ViewModels
     public class MainViewModel : BaseViewModel
     {
         private readonly IOptions<AppSettings> _options;
-        private string _downloadDirectory;
+        private string _bootStrapperPath;
         private bool _bootstrapperFound;
 
         /// <summary>
@@ -20,10 +20,10 @@ namespace VisualStudioDownloader.ViewModels
         public MainViewModel(IOptions<AppSettings> options)
         {
             _options = options;
-            _downloadDirectory = Path.GetFullPath(_options.Value.BootstrapperPath);
+            _bootStrapperPath = Path.GetFullPath(_options.Value.BootstrapperPath);
 
             // Determine if the path is valid
-            _bootstrapperFound = Directory.Exists(_downloadDirectory);           
+            _bootstrapperFound = File.Exists(_bootStrapperPath);           
         }
 
         /// <summary>
@@ -31,10 +31,10 @@ namespace VisualStudioDownloader.ViewModels
         /// </summary>
         public string DownloadDirectory
         {
-            get => _downloadDirectory;
+            get => _bootStrapperPath;
             set
             {
-                _downloadDirectory = value;
+                _bootStrapperPath = value;
                 NotifyPropertyChanged();
             }
         }
@@ -42,7 +42,7 @@ namespace VisualStudioDownloader.ViewModels
         /// <summary>
         /// Gets or sets the bootstrapper found flag.
         /// </summary>
-        public bool BoostrapperFound
+        public bool BootstrapperFound
         {
             get => _bootstrapperFound;
             set

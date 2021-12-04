@@ -109,11 +109,11 @@ namespace VisualStudioDownloader
         {
             var options = ServiceProvider.GetRequiredService<IOptions<AppSettings>>();
 
-            var downloadDirectory = Path.GetFullPath(options.Value.BootstrapperPath);
+            var bootstrapperPath = Path.GetFullPath(options.Value.BootstrapperPath);
 
             // Determine if the path is valid
-            if (!Directory.Exists(downloadDirectory))
-                throw new FileNotFoundException($"Boostrapper in {downloadDirectory} not found. Check the directory or the appsettings.json file.");
+            if (!File.Exists(bootstrapperPath))
+                throw new FileNotFoundException($"Boostrapper [{bootstrapperPath}] not found. Check the directory or the appsettings.json file.");
         }
 
 
