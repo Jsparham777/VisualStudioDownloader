@@ -31,7 +31,7 @@ namespace VisualStudioDownloader.Services
         /// <summary>
         /// Build the argument string by reading the arguments file used, to download the offline installation.
         /// </summary>
-        /// <param name="isInstallation">Adds installation arguments.</param>
+        /// <param name="isInstallation">Builds installation arguments.</param>
         /// <returns>The arguments.</returns>
         string BuildArguments(bool isInstallation = false);
     }

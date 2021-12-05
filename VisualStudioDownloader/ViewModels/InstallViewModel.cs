@@ -51,8 +51,8 @@ namespace VisualStudioDownloader.ViewModels
         /// </summary>
         private void PerformLoadBootstrapperArguments()
         {
-            var args = _bootstrapperService.BuildArguments(true).Split("--").Skip(2).ToList();
-            Arguments = args;
+            var args = _bootstrapperService.BuildArguments(true);
+            Arguments = args.Split("--").Skip(1).ToList();
 
             if (Arguments.Count > 0)
                 ArgumentsFileFound = true;

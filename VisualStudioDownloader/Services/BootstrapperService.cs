@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Options;
-using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text.RegularExpressions;
 using VisualStudioDownloader.Models;
 
 namespace VisualStudioDownloader.Services
@@ -103,15 +103,18 @@ namespace VisualStudioDownloader.Services
         /// <returns><inheritdoc/></returns>
         public string BuildArguments(bool isInstallation = false)
         {
-            var args = _fileHandler.Read();
+            var fileArgs = _fileHandler.Read();
 
             if (isInstallation)
             {
-                string tempArgs = args.Replace(_language, ""); 
-                return $"{tempArgs}";
+                string tempArgs = fileArgs.Replace(_language, "");
+
+                var installArgs = Regex.Replace(tempArgs, "--layout .+? ", "");
+
+                return $"{installArgs}--noweb";
             }
 
-            return args;
+            return fileArgs;
         }
 
         /// <summary>
