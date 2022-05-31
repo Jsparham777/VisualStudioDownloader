@@ -62,11 +62,6 @@
                     Click="ButtonInstall_Click"
                     IsEnabled="{Binding BootstrapperFound}"/>
 
-            
         </StackPanel>
-        <TextBlock VerticalAlignment="Bottom" FontWeight="DemiBold" Margin="5 0 0 5" ToolTip="You can change this directory in the appsettings.json file">
-            <Run Text="Boostrapper directory: "/>
-            <Run Text="{Binding DownloadDirectory}"/>
-        </TextBlock> 
     </Grid>
 </local:BasePage>

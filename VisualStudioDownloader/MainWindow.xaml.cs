@@ -1,7 +1,9 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Windows;
 using VisualStudioDownloader.Dialogs;
 using VisualStudioDownloader.Pages;
+using VisualStudioDownloader.Services;
 
 namespace VisualStudioDownloader
 {
@@ -10,7 +12,13 @@ namespace VisualStudioDownloader
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IBootstrapperService _bootstrapperService;
+
+        /// <summary>
+        /// Initialises a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
+        /// <param name="bootstrapperService"></param>
+        public MainWindow(IBootstrapperService bootstrapperService)
         {
             InitializeComponent();
 
@@ -20,6 +28,8 @@ namespace VisualStudioDownloader
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
 
             mainFrame.Content = new Main();
+            
+            _bootstrapperService = bootstrapperService;
         }
         
         /// <summary>
@@ -87,9 +97,39 @@ namespace VisualStudioDownloader
         private void HelpButtonClick(object sender, RoutedEventArgs e)
         {
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            string bootstrapperCaption;
+            
+            try
+            {
+                var bootstrapperInfo = _bootstrapperService.IdentifyBootstrapper();
 
-            DialogBox dialog = new("INFORMATION", $"Version: {version} \n\nAuthor: J. Sparham", IconType.Information, true);
-            _ = dialog.ShowDialog();
+                bootstrapperCaption =
+                    $"Bootstrapper Information\n" +
+                    $"Product Name: {bootstrapperInfo.ProductName}\n" +
+                    $"Product Version: {bootstrapperInfo.ProductVersion}\n" +
+                    $"Version: {bootstrapperInfo.Version}\n" +
+                    $"Path: {bootstrapperInfo.FilePath}";
+            }
+            catch (Exception)
+            {
+                // Do nothing
+            }
+            finally
+            {
+                string versionCaption =
+                $"Application Information\n" +
+                $"Version: {version} \n" +
+                $"Author: J. Sparham\n\n";
+
+                bootstrapperCaption = "Bootstrapper not found.\nYou can change this directory in the appsettings.json file";
+
+                DialogBox dialog = new("INFORMATION", versionCaption + bootstrapperCaption, IconType.Information, true)
+                {
+                    SizeToContent = SizeToContent.Height
+                };
+
+                _ = dialog.ShowDialog();
+            }
         }
     }
 }

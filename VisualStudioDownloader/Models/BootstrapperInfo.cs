@@ -11,6 +11,11 @@
         public string ProductName { get; set; }
 
         /// <summary>
+        /// The product version.
+        /// </summary>
+        public string ProductVersion { get; set; }
+
+        /// <summary>
         /// The filename.
         /// </summary>
         public string Filename { get; set; }

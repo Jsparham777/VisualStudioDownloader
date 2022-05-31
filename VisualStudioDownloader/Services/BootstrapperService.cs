@@ -48,6 +48,7 @@ namespace VisualStudioDownloader.Services
                 return new BootstrapperInfo
                 {
                     ProductName = file.ProductName,
+                    ProductVersion = file.ProductVersion,
                     Filename = Path.GetFileName(file.FileName),
                     FilePath = Path.GetFullPath(file.FileName),
                     Version = file.FileVersion
