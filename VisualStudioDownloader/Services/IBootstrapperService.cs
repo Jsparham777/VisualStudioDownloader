@@ -42,7 +42,7 @@ namespace VisualStudioDownloader.Services
         string BuildArguments(bool isInstallation = false);
 
         /// <summary>
-        /// Gets a list of GUID folders within the Archive folder.
+        /// Gets a list of GUID folders within the Archive folder that contain a Catalog.json file.
         /// </summary>
         /// <returns>A <see cref="List{string}"/> of GUID folders.</returns>
         List<string> GetArchiveFolderContents();

@@ -135,7 +135,13 @@ namespace VisualStudioDownloader.Services
 
             var dirInfo = new DirectoryInfo(Path.Combine(path, "Archive"));
 
-            return dirInfo.GetDirectories().Select(x => x.FullName).ToList();
+            // Get a list of GUID folders within the Archive folder
+            var dirs = dirInfo.GetDirectories().Select(x => x.FullName).ToList();
+
+            // Check each folder contains a Catalog.json file. If the folder has already been archived, the file is renamed to Catalog_cleaned.json
+            var validDirs = dirs.Where(x => File.Exists(x + @"\Catalog.json") == true).ToList();
+
+            return validDirs;
         }
 
         /// <summary>
