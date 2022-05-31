@@ -39,7 +39,11 @@
             </Grid.RowDefinitions>
 
             <!--Title bar icon-->
-            <Image Grid.Column="0" Width="22" Height="22" Margin="4" Source="/Images/AppIcon.ico"/>
+            <Image Grid.Column="0" 
+                   Width="22" 
+                   Height="22" 
+                   Margin="4" 
+                   Source="/Images/AppIcon.ico"/>
 
             <!--Title bar text-->
             <TextBlock Grid.Column="1" 
@@ -63,13 +67,11 @@
                     Click="HelpButtonClick"
                     RenderOptions.EdgeMode="Aliased"
 		            Style="{StaticResource TitleBarButtonStyle}" Content="?" Width="46" FontSize="18">
-
-                
             </Button>
             
             <!--Title bar Minimise-->
             <Button	Grid.Column="3"
-                    Click="OnMinimizeButtonClick"
+                    Click="OnMinimiseButtonClick"
                     RenderOptions.EdgeMode="Aliased"
 		            Style="{StaticResource TitleBarButtonStyle}">
 
@@ -81,9 +83,9 @@
             </Button>
 
             <!--Title bar Maximise-->
-            <Button	Name="maximizeButton"
+            <Button	Name="MaximiseButton"
 		            Grid.Column="4"       
-		            Click="OnMaximizeRestoreButtonClick"
+		            Click="OnMaximiseRestoreButtonClick"
 		            Style="{StaticResource TitleBarButtonStyle}">
 
                 <Path Width="46"
@@ -94,9 +96,9 @@
             </Button>
 
             <!--Title bar Restore-->
-            <Button Name="restoreButton"
+            <Button Name="RestoreButton"
                     Grid.Column="4"
-                    Click="OnMaximizeRestoreButtonClick"
+                    Click="OnMaximiseRestoreButtonClick"
                     Style="{StaticResource TitleBarButtonStyle}">
 
                 <Path Width="46"
@@ -122,12 +124,12 @@
             <DockPanel Grid.Row="1" Grid.ColumnSpan="5">
 
                 <Frame x:Name="mainFrame"
-                   DockPanel.Dock="Top"
-                   VerticalAlignment="Stretch"
-                   HorizontalAlignment="Stretch"
-                   VerticalContentAlignment="Stretch"
-                   HorizontalContentAlignment="Stretch"
-                   NavigationUIVisibility="Hidden"/>
+                       DockPanel.Dock="Top"
+                       VerticalAlignment="Stretch"
+                       HorizontalAlignment="Stretch"
+                       VerticalContentAlignment="Stretch"
+                       HorizontalContentAlignment="Stretch"
+                       NavigationUIVisibility="Hidden"/>
             </DockPanel>
 
         </Grid>

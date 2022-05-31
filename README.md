@@ -2,8 +2,9 @@
 
 A C#/WPF .NET 6 GUI for downloading a Visual Studio (2019/2022) offline installation layout.
 
-This application provides the ability to download, update and install Visual Studio. 
+This application provides the ability to download, update, and install Visual Studio. 
 Please note, the download and update options download all workloads.
+This tool also provides the ability to clean obsolete packages from the layout.
 
 Possible download options:
 - Optional components

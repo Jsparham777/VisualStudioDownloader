@@ -1,4 +1,5 @@
-﻿using VisualStudioDownloader.Models;
+﻿using System.Collections.Generic;
+using VisualStudioDownloader.Models;
 
 namespace VisualStudioDownloader.Services
 {
@@ -29,10 +30,21 @@ namespace VisualStudioDownloader.Services
         void Install();
 
         /// <summary>
+        /// Removes obsolete packages from the layout folder.
+        /// </summary>
+        void Clean();
+
+        /// <summary>
         /// Build the argument string by reading the arguments file used, to download the offline installation.
         /// </summary>
         /// <param name="isInstallation">Builds installation arguments.</param>
         /// <returns>The arguments.</returns>
         string BuildArguments(bool isInstallation = false);
+
+        /// <summary>
+        /// Gets a list of GUID folders within the Archive folder.
+        /// </summary>
+        /// <returns>A <see cref="List{string}"/> of GUID folders.</returns>
+        List<string> GetArchiveFolderContents();
     }
 }

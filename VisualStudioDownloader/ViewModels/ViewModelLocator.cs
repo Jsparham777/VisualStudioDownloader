@@ -28,6 +28,11 @@ namespace VisualStudioDownloader.ViewModels
         public UpdateViewModel UpdateViewModel => App.ServiceProvider.GetRequiredService<UpdateViewModel>();
 
         /// <summary>
+        /// Gets the <see cref="CleanViewModel"/> from the IoC container.
+        /// </summary>
+        public CleanViewModel CleanViewModel => App.ServiceProvider.GetRequiredService<CleanViewModel>();
+
+        /// <summary>
         /// Gets the <see cref="InstallViewModel"/> from the IoC container.
         /// </summary>
         public InstallViewModel InstallViewModel => App.ServiceProvider.GetRequiredService<InstallViewModel>();

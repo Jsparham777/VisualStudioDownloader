@@ -66,6 +66,7 @@ namespace VisualStudioDownloader
             services.AddTransient<MainViewModel>();
             services.AddTransient<DownloadViewModel>();
             services.AddTransient<UpdateViewModel>();
+            services.AddTransient<CleanViewModel>();
             services.AddTransient<InstallViewModel>();
 
             //Register the Main window

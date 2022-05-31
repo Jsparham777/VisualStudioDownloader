@@ -14,7 +14,7 @@ namespace VisualStudioDownloader
         {
             InitializeComponent();
 
-            RefreshMaximizeRestoreButton();
+            RefreshMaximiseRestoreButton();
 
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
@@ -23,21 +23,21 @@ namespace VisualStudioDownloader
         }
         
         /// <summary>
-        /// Called when [minimize button click].
+        /// Called when [minimise button click].
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void OnMinimizeButtonClick(object sender, RoutedEventArgs e)
+        private void OnMinimiseButtonClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
 
         /// <summary>
-        /// Called when [maximize restore button click].
+        /// Called when [maximise restore button click].
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
-        private void OnMaximizeRestoreButtonClick(object sender, RoutedEventArgs e)
+        private void OnMaximiseRestoreButtonClick(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
         }
@@ -53,19 +53,19 @@ namespace VisualStudioDownloader
         }
 
         /// <summary>
-        /// Refreshes the maximize restore button.
+        /// Refreshes the maximise restore button.
         /// </summary>
-        private void RefreshMaximizeRestoreButton()
+        private void RefreshMaximiseRestoreButton()
         {
             if (WindowState == WindowState.Maximized)
             {
-                maximizeButton.Visibility = Visibility.Collapsed;
-                restoreButton.Visibility = Visibility.Visible;
+                MaximiseButton.Visibility = Visibility.Collapsed;
+                RestoreButton.Visibility = Visibility.Visible;
             }
             else
             {
-                maximizeButton.Visibility = Visibility.Visible;
-                restoreButton.Visibility = Visibility.Collapsed;
+                MaximiseButton.Visibility = Visibility.Visible;
+                RestoreButton.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -76,7 +76,7 @@ namespace VisualStudioDownloader
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void Window_StateChanged(object sender, System.EventArgs e)
         {
-            RefreshMaximizeRestoreButton();
+            RefreshMaximiseRestoreButton();
         }
 
         /// <summary>

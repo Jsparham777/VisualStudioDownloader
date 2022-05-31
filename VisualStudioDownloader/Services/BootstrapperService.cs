@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using VisualStudioDownloader.Models;
 
@@ -47,6 +49,7 @@ namespace VisualStudioDownloader.Services
                 {
                     ProductName = file.ProductName,
                     Filename = Path.GetFileName(file.FileName),
+                    FilePath = Path.GetFullPath(file.FileName),
                     Version = file.FileVersion
                 };
             }
@@ -94,6 +97,44 @@ namespace VisualStudioDownloader.Services
             }
             
             Process.Start(_options.Value.BootstrapperPath, BuildArguments(true));
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public void Clean()
+        {
+            string cleanPaths = string.Empty;
+
+            var folders = GetArchiveFolderContents();
+
+            // Get full path to each Catalog.json file in the GUID folder and add the clean switch
+            foreach (var folder in folders)
+            {
+                var path = Path.Combine(folder, "Catalog.json");
+                if(File.Exists(path))
+                {
+                    cleanPaths += $" --clean {path}";
+                }
+            }
+
+            var targetDir = Path.GetDirectoryName(_options.Value.BootstrapperPath);
+            var arguments = $"--layout {targetDir}{cleanPaths}";
+
+            Process.Start(_options.Value.BootstrapperPath, arguments);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns><inheritdoc/></returns>
+        public List<string> GetArchiveFolderContents()
+        {
+            var path = Path.GetDirectoryName(IdentifyBootstrapper().FilePath);
+
+            var dirInfo = new DirectoryInfo(Path.Combine(path, "Archive"));
+
+            return dirInfo.GetDirectories().Select(x => x.FullName).ToList();
         }
 
         /// <summary>

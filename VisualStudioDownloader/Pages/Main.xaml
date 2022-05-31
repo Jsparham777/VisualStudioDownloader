@@ -42,6 +42,16 @@
                     Click="ButtonUpdate_Click"
                     IsEnabled="{Binding BootstrapperFound}"/>
 
+            <Button x:Name="ButtonClean"
+                    Margin="0 10 0 10"
+                    Height="45"
+                    FontSize="30"
+                    Content="Clean"
+                    ToolTip="Removes obsolete packages from the layout folder"
+                    Style="{DynamicResource TitleBarButtonStyle}"
+                    Click="ButtonClean_Click"
+                    IsEnabled="{Binding BootstrapperFound}"/>
+
             <Button x:Name="ButtonInstall"
                     Margin="0 10 0 10"
                     Height="45"

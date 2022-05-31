@@ -37,6 +37,16 @@ namespace VisualStudioDownloader.Pages
         }
 
         /// <summary>
+        /// Loads the <see cref="Clean"/> page.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonClean_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.Navigate(new Clean());
+        }
+
+        /// <summary>
         /// Loads the <see cref="Install"/> page.
         /// </summary>
         /// <param name="sender">The source of the event.</param>

@@ -16,6 +16,11 @@
         public string Filename { get; set; }
 
         /// <summary>
+        /// The filepath.
+        /// </summary>
+        public string FilePath { get; set; }
+
+        /// <summary>
         /// The version.
         /// </summary>
         public string Version { get; set; }
