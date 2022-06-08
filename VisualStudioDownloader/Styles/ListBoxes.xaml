@@ -1,19 +1,26 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
-    <!--Title bar button style-->
-    <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
-        <Setter Property="Foreground" Value="{DynamicResource TextForegroundBrush}" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Margin" Value="0 5 0 5"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="LayoutTransform">
+
+    <!--ListBox style-->
+    <Style x:Key="ListBoxStyle" TargetType="ListBox">
+        <Setter Property="Foreground" Value="{StaticResource ListBoxForegroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource ListBoxBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource ListBoxForegroundBrush}"/>
+        <!--<Setter Property="Template">
             <Setter.Value>
-                <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                <ControlTemplate TargetType="{x:Type ListBox}">
+                    <Border Name="Border"
+                                  CornerRadius="2" 
+                                  Padding="2"
+                                  Background="{StaticResource ListBoxBackgroundBrush}"
+                                  BorderBrush="{StaticResource ListBoxForegroundBrush}"
+                                  BorderThickness="1" >
+                        <ScrollViewer Margin="0" x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
             </Setter.Value>
-        </Setter>
+        </Setter>-->
     </Style>
 
-   
+
 </ResourceDictionary>

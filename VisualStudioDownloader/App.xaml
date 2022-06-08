@@ -13,6 +13,8 @@
                 <ResourceDictionary Source="Styles/Buttons.xaml"/>
                 <ResourceDictionary Source="Styles/CheckBoxes.xaml"/>
                 <ResourceDictionary Source="Styles/ListBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/ComboBoxes.xaml"/>
+                <ResourceDictionary Source="Styles/TextBoxes.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

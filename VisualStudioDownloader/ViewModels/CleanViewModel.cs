@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using VisualStudioDownloader.Commands;
 using VisualStudioDownloader.Services;
@@ -7,7 +6,7 @@ using VisualStudioDownloader.Services;
 namespace VisualStudioDownloader.ViewModels
 {
     /// <summary>
-    /// Update page view model.
+    /// Clean page view model.
     /// </summary>
     /// <seealso cref="BaseViewModel" />
     public class CleanViewModel : BaseViewModel

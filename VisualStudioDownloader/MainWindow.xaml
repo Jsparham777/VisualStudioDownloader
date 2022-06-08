@@ -40,7 +40,7 @@
 
             <!--Title bar icon-->
             <Image Grid.Column="0" 
-                   Width="22" 
+                   Width="35" 
                    Height="22" 
                    Margin="4" 
                    Source="/Images/AppIcon.ico"/>
@@ -121,7 +121,7 @@
             </Button>
 
             <!--Content-->
-            <DockPanel Grid.Row="1" Grid.ColumnSpan="5">
+            <DockPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4">
 
                 <Frame x:Name="mainFrame"
                        DockPanel.Dock="Top"

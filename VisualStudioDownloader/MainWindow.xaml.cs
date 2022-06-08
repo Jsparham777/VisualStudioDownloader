@@ -97,10 +97,14 @@ namespace VisualStudioDownloader
         private void HelpButtonClick(object sender, RoutedEventArgs e)
         {
             string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            string bootstrapperCaption;
+            string bootstrapperCaption = "";
+            string versionCaption =
+                $"Application Information\n" +
+                $"Version: {version} \n" +
+                $"Author: J. Sparham\n\n";
             
             try
-            {
+            {                
                 var bootstrapperInfo = _bootstrapperService.IdentifyBootstrapper();
 
                 bootstrapperCaption =
@@ -112,17 +116,10 @@ namespace VisualStudioDownloader
             }
             catch (Exception)
             {
-                // Do nothing
+                bootstrapperCaption = "Bootstrapper not found.\nYou can change this directory in the appsettings.json file";
             }
             finally
             {
-                string versionCaption =
-                $"Application Information\n" +
-                $"Version: {version} \n" +
-                $"Author: J. Sparham\n\n";
-
-                bootstrapperCaption = "Bootstrapper not found.\nYou can change this directory in the appsettings.json file";
-
                 DialogBox dialog = new("INFORMATION", versionCaption + bootstrapperCaption, IconType.Information, true)
                 {
                     SizeToContent = SizeToContent.Height

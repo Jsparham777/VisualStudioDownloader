@@ -36,5 +36,10 @@ namespace VisualStudioDownloader.ViewModels
         /// Gets the <see cref="InstallViewModel"/> from the IoC container.
         /// </summary>
         public InstallViewModel InstallViewModel => App.ServiceProvider.GetRequiredService<InstallViewModel>();
+
+        /// <summary>
+        /// Gets the <see cref="ZipViewModel"/> from the IoC container.
+        /// </summary>
+        public ZipViewModel ZipViewModel => App.ServiceProvider.GetRequiredService<ZipViewModel>();
     }
 }

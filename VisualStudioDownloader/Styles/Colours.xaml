@@ -20,6 +20,11 @@
     <SolidColorBrush x:Key="ListBoxBackgroundBrush" Color="#FF1E1E1E"/>
     <SolidColorBrush x:Key="ListBoxForegroundBrush" Color="#FFF0EFF1"/>
 
+    <!--Combobox colours-->
+    <SolidColorBrush x:Key="ComboBoxBackgroundBrush" Color="#FF1E1E1E"/>
+    <SolidColorBrush x:Key="ComboBoxForegroundBrush" Color="#FFF0EFF1"/>
+    <SolidColorBrush x:Key="ComboBoxMouseOverBackgroundBrush" Color="#FF3F3F46"/>
+
     <!--Text colours-->
     <SolidColorBrush x:Key="TextForegroundBrush" Color="#FFF0EFF1"/>
 

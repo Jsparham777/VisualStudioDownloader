@@ -47,6 +47,16 @@ namespace VisualStudioDownloader.Pages
         }
 
         /// <summary>
+        /// Loads the <see cref="Zip"/> page.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
+        private void ButtonZip_Click(object sender, RoutedEventArgs e)
+        {
+            Navigator.Navigate(new Zip());
+        }
+
+        /// <summary>
         /// Loads the <see cref="Install"/> page.
         /// </summary>
         /// <param name="sender">The source of the event.</param>

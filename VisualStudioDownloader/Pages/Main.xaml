@@ -52,6 +52,16 @@
                     Click="ButtonClean_Click"
                     IsEnabled="{Binding BootstrapperFound}"/>
 
+            <Button x:Name="ButtonZip"
+                    Margin="0 10 0 10"
+                    Height="45"
+                    FontSize="30"
+                    Content="Zip"
+                    ToolTip="Zips the downloaded layout folder"
+                    Style="{DynamicResource TitleBarButtonStyle}"
+                    Click="ButtonZip_Click"
+                    IsEnabled="{Binding BootstrapperFound}"/>
+            
             <Button x:Name="ButtonInstall"
                     Margin="0 10 0 10"
                     Height="45"

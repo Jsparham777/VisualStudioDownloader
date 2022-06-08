@@ -60,6 +60,7 @@ namespace VisualStudioDownloader
             services.AddSingleton<IBootstrapperService, BootstrapperService>();
             services.AddSingleton<IFileHandler, FileHandler>();
             services.AddSingleton<ICertificateService, CertificateService>();
+            services.AddSingleton<IZippingService, ZippingService>();
 
             //Register viewmodels                       
             services.AddTransient<MainWindowViewModel>();
@@ -67,6 +68,7 @@ namespace VisualStudioDownloader
             services.AddTransient<DownloadViewModel>();
             services.AddTransient<UpdateViewModel>();
             services.AddTransient<CleanViewModel>();
+            services.AddTransient<ZipViewModel>();
             services.AddTransient<InstallViewModel>();
 
             //Register the Main window
