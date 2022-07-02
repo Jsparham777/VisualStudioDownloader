@@ -48,7 +48,7 @@ namespace VisualStudioDownloader.ViewModels
         /// <summary>
         /// Gets or sets the possible zip split sizes in MBs.
         /// </summary>
-        public ObservableCollection<int> SplitSizeInMegaBytes { get; set; } = new ObservableCollection<int> { 1024, 2048, 3072 };
+        public ObservableCollection<int> SplitSizeInMegaBytes { get; set; } = new ObservableCollection<int> { 1024, 2048, 3072, 4095 };
 
         /// <summary>
         /// Gets or sets the selected zip split size in MBs.
@@ -98,11 +98,7 @@ namespace VisualStudioDownloader.ViewModels
         /// </summary>
         public void Zip()
         {
-            //TODO:
-            // Add browse button
-            // Add TextBox Style from resource dictionary
-
-            var layoutPath = _bootstrapperService.IdentifyBootstrapper().FilePath;
+            var layoutPath = _bootstrapperService.IdentifyBootstrapper().FolderPath;
 
             _zippingService.ZipDirectory(layoutPath, OutputPath, SelectedSplitSizeInMegaBytes);
         }

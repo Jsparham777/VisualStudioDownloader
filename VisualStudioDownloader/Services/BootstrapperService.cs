@@ -51,6 +51,7 @@ namespace VisualStudioDownloader.Services
                     ProductVersion = file.ProductVersion,
                     Filename = Path.GetFileName(file.FileName),
                     FilePath = Path.GetFullPath(file.FileName),
+                    FolderPath = Path.GetDirectoryName(file.FileName),
                     Version = file.FileVersion
                 };
             }

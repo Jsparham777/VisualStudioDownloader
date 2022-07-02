@@ -21,9 +21,14 @@
         public string Filename { get; set; }
 
         /// <summary>
-        /// The filepath.
+        /// The file path.
         /// </summary>
         public string FilePath { get; set; }
+
+        /// <summary>
+        /// The folder path.
+        /// </summary>
+        public string FolderPath { get; internal set; }
 
         /// <summary>
         /// The version.
