@@ -1,4 +1,7 @@
 ﻿using Ionic.Zip;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 
 namespace VisualStudioDownloader.Services
 {
@@ -19,11 +22,15 @@ namespace VisualStudioDownloader.Services
             zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
             zip.AddDirectory(sourceDirectoryPath, directoryPathInArchive: string.Empty);
 
-            if(splitSize != 0)
-                zip.MaxOutputSegmentSize = 1024 * 1024 * splitSize;
+            if (splitSize != 0)
+            {
+                long segmentSize = 1024 * 1024 * (long)splitSize;
+                zip.MaxOutputSegmentSize64 = segmentSize;
+            }
 
-            if (!outputPath.EndsWith(".zip"))
-                outputPath += ".zip";
+            // Open the output directory in File Explorer
+            Process.Start("explorer.exe", Path.GetDirectoryName(outputPath));
+
             zip.Save(outputPath);
         }
     }
